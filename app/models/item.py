@@ -41,6 +41,7 @@ class Item(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'price': self.price,
             'content_type': self.content_type,
             'image_url': self.image_url,
             'created_date':  self.created_date,
@@ -52,6 +53,7 @@ class Item(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'price': self.price,
             'content_type': self.content_type,
             'image_url': self.image_url,
             'created_date':  self.created_date,

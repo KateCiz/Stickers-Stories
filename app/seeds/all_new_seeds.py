@@ -93,19 +93,19 @@ def seed_stores():
         user_id=2,
         name="Cute Coding",
         about="In software development, us women are underrepresented so I set out to craft cute and feminine merchandise just for YOU! Women code too!",
-        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537748/Stories%20%2B%20Stickers/Cute%20Coding/Cute_Coding_wwmmim.png",
+        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670275824/Stories%20%2B%20Stickers/Cute%20Coding/NEW_STORY_COMING_SOON..._k2rqfw.png",
         profile_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537978/Stories%20%2B%20Stickers/Cute%20Coding/cute_coding_profile_pic_rz5htw.png")
     chill_shop = Store(
         user_id=3,
         name="Chill Shop",
         about="Software Developer life is constantly evolving so I evolved with it. Fast food restaurants are empowering me to never have to cook a single meal ever again! I made some super dope stickers to celebrate.",
-        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537761/Stories%20%2B%20Stickers/Chill%20Shop/Chill_thuaqw.png",
+        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670275729/Stories%20%2B%20Stickers/Chill%20Shop/chill_banner_mindut.png",
         profile_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668538061/Stories%20%2B%20Stickers/Chill%20Shop/Copy_of_Untitled_Design_1_rr5ioc.png")
     vampires_and_code = Store(
         user_id=4,
         name="Vampires + Code",
         about="Hey, I'm a coder (and secretly a vampire). If you are too, or just hate the daytime, you've come to the right shop!",
-        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537781/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/INTO_THE_SHADOWS_h1bwo1.png",
+        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670275995/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/Into_shadows_banner_ybjmxv.png",
         profile_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668538056/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/Copy_of_Untitled_Design_pgdhc5.png")
 
     db.session.add(demo_store)

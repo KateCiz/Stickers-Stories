@@ -1,0 +1,46 @@
+.store-page-cover-img-div {
+    height: 275px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.store-info-div {
+    display: flex;
+    align-items: center;
+}
+
+.store-info-text {
+    display: block;
+}
+
+.store-profile-image-container {
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 3px solid #7B424F;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.store-name {
+    font-size: 30px;
+    font-family: "Abril Fatface";
+}
+
+.store-about {
+    font-size: 18px;
+    font-family: "League Spartan";
+}
+
+.store-items-count {
+    font-family: "League Spartan";
+}
+
+.store-avg-review {
+    font-family: "League Spartan";
+}

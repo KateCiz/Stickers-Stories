@@ -21,15 +21,12 @@ def seed():
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
         db.session.commit()
 
-        undo_stores()
         db.session.execute(f"TRUNCATE table {SCHEMA}.stores RESTART IDENTITY CASCADE;")
         db.session.commit()
 
-        undo_items()
         db.session.execute(f"TRUNCATE table {SCHEMA}.items RESTART IDENTITY CASCADE;")
         db.session.commit()
 
-        undo_reviews()
         db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
         db.session.commit()
     seed_users()

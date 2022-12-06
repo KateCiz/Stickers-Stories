@@ -1,0 +1,216 @@
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createNewItem } from '../../store/items';
+import { Redirect, useHistory } from 'react-router-dom';
+import './index.css';
+import { getSingleStore } from '../../store/stores';
+
+function CreateItemForm() {
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const loggedInUser = useSelector(state => state.session.user);
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
+    const [content, setContent] = useState('');
+    const [contentType, setContentType] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+
+    const [nameErrors, setNameErrors] = useState(false);
+    const [descriptErrors, setDescriptErrors] = useState(false);
+    const [priceErrors, setPriceErrors] = useState(false);
+    const [contentErrors, setContentErrors] = useState(false);
+    const [imageUrlErrors, setImageUrlErrors] = useState(false);
+    const [showErrors, setShowErrors] = useState(false);
+    const [isValidLink, setIsValidLink] = useState(true);
+    const [isValidContentLink, setIsValidContentLink] = useState(true);
+    const imgEndings = ["jpg", "svg", "png"];
+
+  useEffect(() => {
+    if (name.replaceAll(" ", "").length < 1) {
+      setNameErrors(true);
+    } else {
+      setNameErrors(false);
+    }
+    if (description.replaceAll(" ", "").length < 1) {
+      setDescriptErrors(true);
+    } else {
+      setDescriptErrors(false);
+    }
+    if (price.replaceAll(" ", "").length < 1 || !Number(price)) {
+        setPriceErrors(true);
+      } else {
+        setPriceErrors(false);
+      }
+    if (content.replaceAll(" ", "").length < 1) {
+      setContentErrors(true);
+    } else {
+        setContentErrors(false);
+    }
+    if(contentType === 'sticker') {
+        const ending = content.slice(-3);
+        if (!imgEndings.includes(ending)) {
+          setIsValidContentLink(false);
+        } else {
+          setIsValidContentLink(true);
+        }
+    } else if(contentType === 'story') {
+        const contentArr = content.split('/');
+        if (contentArr.length >= 5 && contentArr[2] === 'docs.google.com' && contentArr[3] === 'document') {
+          setIsValidContentLink(true);
+        } else {
+          setIsValidContentLink(false);
+        }
+    }
+
+    if (imageUrl.length > 1) {
+      if (imageUrl.replaceAll(" ", "").length < 1) {
+        setImageUrlErrors(true);
+      }
+    }
+    if (imageUrl.length > 1) {
+      if (imageUrl.replaceAll(" ", "").length > 1) {
+        const ending = imageUrl.slice(-3);
+        if (!imgEndings.includes(ending)) {
+          setIsValidLink(false);
+        } else {
+          setIsValidLink(true);
+        }
+      }
+    } else {
+      setImageUrlErrors(false);
+    }
+  }, [name, description, price, content, contentType, imageUrl]);
+
+    if (!loggedInUser?.id) return (
+        <Redirect to='/'/>
+      )
+  
+      const handleCancel = (e) => {
+        e.preventDefault();
+        history.push('/')
+      };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (nameErrors || descriptErrors || priceErrors || contentErrors || imageUrlErrors || !isValidContentLink || !isValidLink) {
+            setShowErrors(true);
+          }
+      
+          if (!nameErrors && !descriptErrors && !priceErrors && !contentErrors && !imageUrlErrors && isValidContentLink && isValidLink) {
+            let item = {
+                name,
+                description,
+                price,
+                content,
+                content_type: contentType,
+                image_url: imageUrl
+            };
+
+            dispatch(createNewItem(item))
+            .then(() => {dispatch(getSingleStore(loggedInUser?.store_id))})
+            .then(() =>{history.push(`/stores/${loggedInUser?.store_id}`)});
+
+        }
+    }
+
+    return (
+        <div className="item-create-form">
+            <form onSubmit={handleSubmit}>
+                {nameErrors && showErrors ? (
+                <div className="errors-msg">
+                  <p>Name must have at least 1 character</p>
+                </div>
+                ) : null}
+                <label>
+                    Name: 
+                    <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)} 
+                        required />
+                </label>
+                {descriptErrors && showErrors ? (
+                <div className="errors-msg">
+                  <p>Description must have at least 1 character</p>
+                </div>
+                ) : null}
+                <label>
+                    Description: 
+                    <input
+                        type="text"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)} 
+                        required />
+                </label>
+                {priceErrors && showErrors ? (
+                <div className="errors-msg">
+                  <p>Price must have at least 1 character and be a number greater than 0</p>
+                </div>
+                ) : null}
+                <label>
+                    Price: 
+                    <input
+                        type="text"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)} 
+                        required />
+                </label>
+                {contentErrors && showErrors ? (
+                <div className="errors-msg">
+                  <p>Content must have at least 1 character</p>
+                </div>
+                ) : null}
+                {!isValidContentLink && showErrors ? (
+                <div className="errors-msg">
+                  <p>An Sticker Url must end in .jpg, .svg, or .png</p>
+                  <p>A Story Url must be a link shared from Google Docs</p>
+                </div>
+                ) : null}
+                <label>
+                    Content Url: 
+                    <input
+                        type="text"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)} 
+                        required />
+                </label>
+                {imageUrlErrors && showErrors ? (
+                <div className="errors-msg">
+                  <p>Image Url must contain at least 1 character</p>
+                </div>
+                ) : null}
+                {!isValidLink && showErrors ? (
+                <div className="errors-msg">
+                  <p> An Image Url must end in .jpg, .svg, or .png</p>
+                </div>
+                ) : null}
+                <label>
+                    `Image Url: *square photos work best`
+                    <input
+                        type="text"
+                        value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.value)} 
+                        required />
+                </label>
+                <label>
+                    Content Type:
+                    <select
+                        value={contentType}
+                        onChange={(e) => setContentType(e.target.value)}
+                        required>
+                        <option value='' disabled={true}>Choose</option>
+                        <option value='story'>Story</option>
+                        <option value='sticker'>Sticker</option>
+                    </select>
+                </label>
+                <button className="submit-btn" type="submit">Create Item</button>
+                <button className="cancel-btn" type="button" onClick={handleCancel}>Cancel</button>
+            </form>
+        </div>
+    )
+};
+
+export default CreateItemForm;

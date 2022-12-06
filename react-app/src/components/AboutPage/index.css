@@ -1,0 +1,83 @@
+.about-coder-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Abril Fatface";
+    font-size: 50px;
+}
+
+.about-me-div {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #7B424F;
+}
+
+.my-name {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: "League Spartan";
+    margin-left: 3%;
+}
+
+.my-blurb {
+    font-size: 25px;
+    font-family: "League Spartan";
+    margin-left: 3%;
+}
+
+.my-links {
+    font-family: "League Spartan";
+    font-size: 20px;
+    margin-left: 3%;
+}
+
+.about-me-pic {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.about-me-text {
+    width: 45%;
+    margin-left: 20px;
+}
+
+.my-github {
+    margin: 5px;
+    font-family: "League Spartan";
+}
+
+.technologies-bar {
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+}
+
+.one-tech-div {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+.icon-div {
+    display: flex;
+    align-items: center;
+    /* margin-left: 10px; */
+}
+
+.icon-name-div {
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+

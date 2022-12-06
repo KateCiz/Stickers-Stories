@@ -1,0 +1,87 @@
+.full-page-item-div {
+    height: 100%;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    align-items: center;
+}
+
+
+.full-page-item-img-div {
+    width: 450px;
+    height: 450px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 15px;
+}
+
+.store-preview-div {
+    display: inline-flex;
+}
+
+.store-preview-profile-image-container {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.store-preview-name {
+    font-size: 17px;
+    font-weight: bold;
+    font-family: "League Spartan";
+}
+
+.full-page-item-main-info {
+    display: block;
+}
+
+.full-page-item-name {
+    font-size: 32px;
+    font-family: "League Spartan";
+}
+
+.full-page-item-rating {
+    font-size: 20px;
+}
+
+.full-page-item-price {
+    font-size: 45px;
+    font-family: "League Spartan";
+}
+
+/* .full-page-item-description-div {
+
+} */
+
+.full-page-item-img-div {
+    margin-right: 30px;
+}
+
+.full-page-item-description {
+    font-size: 20px;
+    font-family: "League Spartan";
+}
+
+/* BigItemButton */
+.edit-item-btn {
+    font-family: "League Spartan";;
+    background-color: #7B424F;
+    align-items: center;
+    border: 0;
+    color:  #FFF5F0;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+}
+
+

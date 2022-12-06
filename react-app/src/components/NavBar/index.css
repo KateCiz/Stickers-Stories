@@ -1,0 +1,42 @@
+.nav-list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    /* justify-content: right; */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.sticker-stories-header {
+    text-decoration: none;
+    font-size: 25px;
+    font-family: "Abril Fatface" !important;
+    color: #7B424F;
+}
+
+.profile-dropdown {
+    font-family: "League Spartan";
+}
+
+.store-dropdown {
+    font-family: "League Spartan";
+}
+
+.store-link {
+    font-family: "League Spartan";
+    text-decoration: none;
+    color: #7B424F;
+}
+
+.logout {
+    color: #7B424F;
+    background-color: #fff5f0;
+    border: 2px solid #7B424F;
+    border-radius: 100px;
+    font-family: "League Spartan";
+}

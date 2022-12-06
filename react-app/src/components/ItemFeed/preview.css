@@ -1,0 +1,56 @@
+.homepage-banner {
+    height: 275px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.feed-preview-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-left: 60px;
+}
+
+.store-feed-preview-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    margin-left: 60px;
+}
+
+.item-preview-container {
+    overflow: hidden;
+}
+
+.item-img-preview-container {
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 15px;
+}
+
+.item-name-preview-text {
+    font-size: 25px;
+    font-family: "League Spartan";
+    color:  #7B424F;
+    overflow: hidden;
+    max-width: 300px;
+}
+
+.item-store-preview-text {
+    font-size: 15px;
+    font-family: "League Spartan";
+    color:  #7B424F;
+}
+
+.item-price-preview-container {
+    font-size: 20px;
+    font-family: "League Spartan";
+    color:  #7B424F;
+}

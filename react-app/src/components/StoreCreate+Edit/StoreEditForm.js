@@ -13,7 +13,7 @@ function EditStoreForm({store, exitModal}) {
     const [about, setAbout] = useState(store?.about);
     const [coverImage, setCoverImage] = useState(store?.cover_image_url);
     const [profileUrl, setProfileUrl] = useState(store?.profile_image_url);
-    
+ 
     const [nameErrors, setNameErrors] = useState(false);
     const [aboutErrors, setAboutErrors] = useState(false);
     const [coverErrors, setCoverErrors] = useState(false);
@@ -34,8 +34,8 @@ function EditStoreForm({store, exitModal}) {
 
 
                   if (name?.replaceAll(" ", "").length < 1) {
-                  } else {
                     setNameErrors(true);
+                  } else {
                     setNameErrors(false);
                   }
                   if (about?.replaceAll(" ", "").length < 1) {
@@ -96,7 +96,7 @@ function EditStoreForm({store, exitModal}) {
               }
             }
           }
-      }, [name, about, coverImage, profileUrl]);
+      }, [store, name, about, coverImage, profileUrl]);
 
     
     const handleSubmit = async (e) => {

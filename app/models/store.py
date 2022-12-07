@@ -57,4 +57,4 @@ class Store(db.Model):
             stars = [review.star_rating for review in self.store_reviews]
             for i in stars:
                 count = count + i   
-            return count/len(self.store_reviews)
+            return round(count/len(self.store_reviews), 2)

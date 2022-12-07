@@ -46,13 +46,13 @@ function StorePage() {
         <div className="store-info-text">
           <p className="store-name">{store?.name}</p>
           <p className="store-about">{store?.about}</p>
-          { loggedInUser?.store_id === store?.id && <EditStoreModal />}
+          { loggedInUser?.store_id === store?.id && <EditStoreModal store={store}/>}
         </div>
       </div>
 
       <div className="store-items-info">
         <p className="store-items-count">Items: {store?.Items?.length ? store?.Items?.length : 0}</p>
-        <p className="store-avg-review">Average Review: {store?.avg_reviews ? store?.avg_reviews?.toFixed(1) : "No reviews yet"}</p>
+        <p className="store-avg-review">Average Review: {store?.avg_reviews ? store?.avg_reviews : "No reviews yet"}</p>
       </div>
 
 

@@ -69,10 +69,10 @@
 
 /* BigItemButton */
 .edit-item-btn {
-    font-family: "League Spartan";;
+    font-family: "League Spartan";
     background-color: #7B424F;
     align-items: center;
-    border: 0;
+    border: 2px solid #7B424F;
     color:  #FFF5F0;
     cursor: pointer;
     justify-content: center;
@@ -84,4 +84,18 @@
     text-decoration: none;
 }
 
+.delete-btn {
+    color: #7B424F;
+    background-color: #FFF5F0;
+    border: 2px solid #7B424F;
+    border-radius: 100px;
+    font-family: "League Spartan";
+    cursor: pointer;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+}
 

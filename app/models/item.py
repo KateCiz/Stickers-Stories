@@ -88,7 +88,7 @@ class Item(db.Model):
             stars = [review.star_rating for review in self.item_reviews]
             for i in stars:
                 count = count + i   
-            return count/len(self.item_reviews)
+            return round(count/len(self.item_reviews), 2)
 
     def cart_item_to_dict(self):
         return {

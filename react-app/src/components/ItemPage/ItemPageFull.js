@@ -52,7 +52,7 @@ function FullItemPage() {
           <div>
             <p className="full-page-item-rating">
               <AiFillStar />
-              {item?.avg_star_rating?.toFixed(1)}
+              {item?.avg_star_rating}
             </p>
             {/* <StarRating rating={item?.avg_star_rating}/> check to see if this is right */}
           </div>
@@ -64,7 +64,7 @@ function FullItemPage() {
         <div>
           <BigItemButton item={item} id={itemId}/>
           {loggedInUser?.store_id === item?.Store?.id &&
-          <button className='store-link' onClick={async () => await dispatch(deleteAnItem(itemId)).then(() => {history.push(`/stores/${loggedInUser?.store_id}`)})}>Delete Item</button>
+          <button className='delete-btn' onClick={async () => await dispatch(deleteAnItem(itemId)).then(() => {history.push(`/stores/${loggedInUser?.store_id}`)})}>Delete Item</button>
           }
           </div>
       </div>

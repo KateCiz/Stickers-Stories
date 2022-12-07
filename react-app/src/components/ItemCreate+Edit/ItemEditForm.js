@@ -55,7 +55,7 @@ function EditItemForm() {
                   } else {
                     setDescriptErrors(false);
                   }
-                  if (price?.replaceAll(" ", "").length < 1 || !Number(price)) {
+                  if (`${price}`?.replaceAll(" ", "").length < 1 || !Number(price)) {
                       setPriceErrors(true);
                     } else {
                       setPriceErrors(false);

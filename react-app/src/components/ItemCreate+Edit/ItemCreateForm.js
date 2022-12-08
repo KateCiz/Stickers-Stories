@@ -119,6 +119,12 @@ function CreateItemForm() {
     return (
         <div className="item-create-form">
             <form onSubmit={handleSubmit}>
+              <div className='item-tips-text'>
+                <p className='item-tips-into'>Hi, when creating a new item here are a few tips!</p>
+                <p>1. All image urls - including sticker content urls - must end in .png, .jpg, or .svg</p>
+                <p>2. Content urls for stories must be shared links from a Google Document</p>
+              </div>
+              <div className='item-input-div'>
                 {nameErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Name must have at least 1 character</p>
@@ -128,10 +134,13 @@ function CreateItemForm() {
                     Name: 
                     <input
                         type="text"
+                        className='item-input'
                         value={name}
                         onChange={(e) => setName(e.target.value)} 
                         required />
                 </label>
+              </div>
+              <div className='item-input-div'>
                 {descriptErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Description must have at least 1 character</p>
@@ -141,10 +150,13 @@ function CreateItemForm() {
                     Description: 
                     <input
                         type="text"
+                        className='item-input'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)} 
                         required />
                 </label>
+              </div>
+              <div className='item-input-div'>
                 {priceErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Price must have at least 1 character and be a number greater than 0</p>
@@ -154,10 +166,13 @@ function CreateItemForm() {
                     Price: 
                     <input
                         type="text"
+                        className='item-input'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)} 
                         required />
                 </label>
+              </div>
+              <div className='item-input-div'>
                 {contentErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Content must have at least 1 character</p>
@@ -173,10 +188,13 @@ function CreateItemForm() {
                     Content Url: 
                     <input
                         type="text"
+                        className='item-input'
                         value={content}
                         onChange={(e) => setContent(e.target.value)} 
                         required />
                 </label>
+              </div>
+              <div className='item-input-div'>
                 {imageUrlErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Image Url must contain at least 1 character</p>
@@ -188,16 +206,20 @@ function CreateItemForm() {
                 </div>
                 ) : null}
                 <label>
-                    `Image Url: *square photos work best`
+                    Image Url:
                     <input
                         type="text"
+                        className='item-input'
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)} 
                         required />
                 </label>
+              </div>
+              <div className='item-input-div'>
                 <label>
                     Content Type:
                     <select
+                        className='item-input'
                         value={contentType}
                         onChange={(e) => setContentType(e.target.value)}
                         required>
@@ -206,6 +228,7 @@ function CreateItemForm() {
                         <option value='sticker'>Sticker</option>
                     </select>
                 </label>
+              </div>
                 <button className="submit-btn" type="submit">Create Item</button>
                 <button className="cancel-btn" type="button" onClick={handleCancel}>Cancel</button>
             </form>

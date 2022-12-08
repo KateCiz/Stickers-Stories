@@ -1,9 +1,18 @@
+.feed-div {
+    margin-bottom: 30px;
+}
+
+.store-feed-div {
+    margin-bottom: 30px;
+}
+
 .homepage-banner {
     height: 275px;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    margin-top: 60px;
 }
 
 .feed-preview-items {

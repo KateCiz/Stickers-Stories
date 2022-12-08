@@ -2,6 +2,7 @@
     display: flex;
     list-style: none;
     align-items: center;
+    margin-right: 10px;
     /* justify-content: right; */
 }
 
@@ -9,7 +10,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: #fff5f0;
+    border-bottom: 1px solid #7B424F;
 }
 
 .sticker-stories-header {
@@ -17,20 +22,54 @@
     font-size: 25px;
     font-family: "Abril Fatface" !important;
     color: #7B424F;
+    margin-left: 10px;
 }
 
 .profile-dropdown {
     font-family: "League Spartan";
+    margin-right: 10px;
+}
+
+.profile-icon {
+    margin-right: 20px;
+    height: 25px;
+    width: auto;
+}
+
+.store-dropdown-li {
+    margin-bottom: 10px;
+}
+
+.store-icon {
+    margin-right: 20px;
+    height: 20px;
+    width: auto;
 }
 
 .store-dropdown {
     font-family: "League Spartan";
 }
 
+.store-dropdown-li {
+    margin-bottom: 10px;
+}
+
 .store-link {
     font-family: "League Spartan";
     text-decoration: none;
     color: #7B424F;
+}
+
+.delete-store {
+    font-family: "League Spartan";
+    font-size: 13px;
+    color: #7B424F;
+    background-color: #fff5f0;
+    border: 2px solid #7B424F;
+    border-radius: 100px;
+    padding: 4px;
+    margin-top: 5px;
+    cursor: pointer;
 }
 
 .logout {

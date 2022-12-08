@@ -93,7 +93,7 @@ def seed_stores():
         user_id=2,
         name="Cute Coding",
         about="In software development, us women are underrepresented so I set out to craft cute and feminine merchandise just for YOU! Women code too!",
-        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670275824/Stories%20%2B%20Stickers/Cute%20Coding/NEW_STORY_COMING_SOON..._k2rqfw.png",
+        cover_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670541639/Stories%20%2B%20Stickers/Cute%20Coding/NEW_STORY_COMING_SOON..._1_m5pchv.png",
         profile_image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537978/Stories%20%2B%20Stickers/Cute%20Coding/cute_coding_profile_pic_rz5htw.png")
     chill_shop = Store(
         user_id=3,

@@ -1,5 +1,5 @@
 .store-page-div{
-    margin-top: 53px;
+    margin-top: 70px;
 }
 .store-page-cover-img-div {
     height: 275px;
@@ -16,6 +16,7 @@
 
 .store-info-text {
     display: block;
+    margin-left: 20px;
 }
 
 .store-profile-image-container {
@@ -28,6 +29,7 @@
     border-radius: 50%;
     margin-top: 10px;
     margin-right: 10px;
+    margin-left: 20px;
 }
 
 .store-name {
@@ -38,6 +40,10 @@
 .store-about {
     font-size: 18px;
     font-family: "League Spartan";
+}
+
+.store-items-info {
+    margin-left: 40px;
 }
 
 .store-items-count {

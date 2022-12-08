@@ -29,10 +29,6 @@ function EditStoreForm({store, exitModal}) {
               if (store?.id !== loggedInUser?.store_id) {
                 history.push("/404");
               } else {
-///////
-
-
-
                   if (name?.replaceAll(" ", "").length < 1) {
                     setNameErrors(true);
                   } else {
@@ -79,20 +75,6 @@ function EditStoreForm({store, exitModal}) {
                   } else {
                       setProfileUrlErrors(false);
                   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-                ///////
               }
             }
           }
@@ -130,6 +112,7 @@ function EditStoreForm({store, exitModal}) {
     return (
         <>
             <form className="edit-store-form" onSubmit={handleSubmit}>
+              <p className='edit-store-header'>Edit Store</p>
                 {nameErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Name must have at least 1 character</p>

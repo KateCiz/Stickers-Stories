@@ -110,6 +110,7 @@ function CreateStoreForm({exitModal}) {
 
     return (
         <form className="create-store-form" onSubmit={handleSubmit}>
+          <p className='create-store-header'>Create Store</p>
             {nameErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Name must have at least 1 character</p>

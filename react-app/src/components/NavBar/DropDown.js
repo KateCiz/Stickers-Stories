@@ -25,14 +25,12 @@ function DropDownMenu({user, location}) {
 
     if(location === 'profile'){
         DropDown = <>
-                    {/* <button className='nav-item' onClick={showMenu}> */}
-                    <BsPerson onClick={showMenu}/>
-                   {/* </button> */}
+                    <BsPerson className="profile-icon" onClick={showMenu}/>
                    {isMenuShown && (
                        <ul className='profile-dropdown'>
-                           <li>{user?.username}</li>
-                           <li>{user?.email}</li>
-                           <li>
+                           <li className='store-dropdown-li'>{user?.username}</li>
+                           <li className='store-dropdown-li'>{user?.email}</li>
+                           <li className='store-dropdown-li'>
                                <button className="logout" onClick={logout}>Log Out</button>
                            </li>
                    </ul>
@@ -44,20 +42,17 @@ function DropDownMenu({user, location}) {
         DropDown = <>
             {user?.store_id !== 'null' ? 
                 <>
-                    {/* <button className='nav-item' onClick={showMenu}> */}
-                    <BsShop   onClick={showMenu}/>
-                    {/* <FaStore className='fa-5x' onClick={showMenu} /> */}
-                   {/* </button> */}
+                    <BsShop className="store-icon" onClick={showMenu}/>
                    {isMenuShown && (
                        <ul className='store-dropdown'>
-                            <li>
+                            <li className='store-dropdown-li'>
                                 <NavLink className='store-link' to={`/stores/${user?.store_id}`}>My Store</NavLink>
                             </li>
-                           <li>
+                           <li className='store-dropdown-li'>
                                 <NavLink className='store-link' to={'/new-item'}>Add Item</NavLink>
                            </li>
-                           <li>
-                               <p className='store-link' onClick={async () => await dispatch(deleteAStore(user?.store_id)).then(() => {dispatch(sessionActions.authenticate())}).then(() => {history.push('/')})}>Delete Store</p>
+                           <li className='store-dropdown-li'>
+                               <p className='delete-store' onClick={async () => await dispatch(deleteAStore(user?.store_id)).then(() => {dispatch(sessionActions.authenticate())}).then(() => {history.push('/')})}>Delete Store</p>
                            </li>
                    </ul>
                 )}

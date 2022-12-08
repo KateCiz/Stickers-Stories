@@ -136,7 +136,12 @@ function EditItemForm() {
         <div className='edit-item-div'>
         {loaded && (
         <form onSubmit={handleSubmit}>
-            <div className='edit-form-input'>
+          <div className='item-tips-text'>
+                <p className='item-tips-into'>Hi, tips to remember when editing an item...</p>
+                <p>1. All image urls - including sticker content urls - must end in .png, .jpg, or .svg</p>
+                <p>2. Content urls for stories must be shared links from a Google Document</p>
+              </div>
+            <div className='item-input-div'>
                 {nameErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Name must have at least 1 character</p>
@@ -146,12 +151,13 @@ function EditItemForm() {
                     Name: 
                     <input
                         type="text"
+                        className='item-input'
                         value={name}
                         onChange={(e) => setName(e.target.value)} 
                         required />
                 </label>
             </div>
-            <div className='edit-form-input'>
+            <div className='item-input-div'>
                 {descriptErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Description must have at least 1 character</p>
@@ -161,12 +167,13 @@ function EditItemForm() {
                     Description: 
                     <input
                         type="text"
+                        className='item-input'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)} 
                         required />
                 </label>
             </div>
-            <div className='edit-form-input'>
+            <div className='item-input-div'>
                 {priceErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Price must have at least 1 character and be a number greater than 0</p>
@@ -176,12 +183,13 @@ function EditItemForm() {
                     Price: 
                     <input
                         type="text"
+                        className='item-input'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)} 
                         required />
                 </label>
             </div>
-            <div className='edit-form-input'>
+            <div className='item-input-div'>
                 {contentErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Content must have at least 1 character</p>
@@ -197,12 +205,13 @@ function EditItemForm() {
                     Content Url: 
                     <input
                         type="text"
+                        className='item-input'
                         value={content}
                         onChange={(e) => setContent(e.target.value)} 
                         required />
                 </label>
             </div>
-            <div className='edit-form-input'>
+            <div className='item-input-div'>
                 {imageUrlErrors && showErrors ? (
                 <div className="errors-msg">
                   <p>Image Url contain at least 1 character</p>
@@ -214,18 +223,20 @@ function EditItemForm() {
                 </div>
                 ) : null}
                 <label>
-                    `Image Url: *square photos work best`
+                    Image Url:
                     <input
                         type="text"
+                        className='item-input'
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)} 
                         required />
                 </label>
             </div>
-            <div className='edit-form-input'>
+            <div className='item-input-div'>
             <label>
                 Content Type:
                 <select
+                    className='item-input'
                     value={contentType}
                     onChange={(e) => setContentType(e.target.value)}
                     required>

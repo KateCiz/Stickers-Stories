@@ -44,7 +44,7 @@ const SignUpForm = ({exitModal, changePage}) => {
       <button className="exit-icon" onClick={exitFromModal}>
         <i className="fa-solid fa-xmark"></i>
       </button>
-      <span className="signup-modal-heading">Join Stickers + Stories</span>
+      <span className="signup-modal-heading">Join Stickers & Stories</span>
       <form className="signup-form" onSubmit={onSignUp}>
         <div>
           {errors.map((error, ind) => (

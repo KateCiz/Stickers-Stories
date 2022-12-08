@@ -2,7 +2,8 @@
   font-family: "League Spartan";
   background-color: #7B424F;
   align-items: center;
-  border: 0;
+  border: 2px solid #7B424F;
+  border-radius: 100px;
   color:  #FFF5F0;
   cursor: pointer;
   justify-content: center;

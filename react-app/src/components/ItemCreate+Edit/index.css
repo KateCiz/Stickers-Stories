@@ -1,13 +1,53 @@
-.edit-item-div {
-    display: block;
-}
-
+/* create page  */
 .item-create-form {
     font-family: "League Spartan";
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
+
+
+/* edits page  */
 
 .edit-item-div {
     font-family: "League Spartan";
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+/* both pages */
+
+.item-tips-text {
+    font-size: 15px;
+    color: black;
+}
+
+.item-tips-into {
+    font-size: 25px;
+}
+
+.item-input-div {
+    margin: 10px;
+}
+
+.item-input {
+    border-radius: 100px;
+    border: 1px solid #7B424F;
+    margin-left: 5px;
+    font-family: "League Spartan";
+    height: 24px;
+    font-size: 20px;
+    padding: 2px;
+}
+
+
+.errors-msg {
+    color: black;
 }
 
 .submit-btn {

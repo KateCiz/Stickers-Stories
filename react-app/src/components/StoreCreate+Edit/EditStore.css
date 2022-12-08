@@ -1,62 +1,70 @@
-  .edit-store-input {
-      display: block;
-      width: 40%;
-      margin: auto;
-      margin-top: 5px;
-      padding-bottom: 5px;
-      font-size: 16px;
-      border: none;
-      outline: none;
-      background: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-      text-align: center;
-    }
-  
-  .edit-store-label{
-      font-family: "League Spartan";
-      font-size: 13px;
-      margin: auto;
+.edit-store-form {
+  justify-content: center;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.edit-store-header {
+  color: #7B424F;
+  font-size: 30px;
+  font-family: "League Spartan";
+}
+
+.edit-store-input {
+  display: block;
+  width: 40%;
+  margin: 5px auto 10px auto;
+  padding-bottom: 5px;
+  font-size: 16px;
+  outline: none;
+  border: 1px solid #7B424F;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.edit-store-label{
+  font-family: "League Spartan";
+  font-size: 20px;
+}
+
+.edit-store-btn {
+  align-items: center;
+  background-color: #7B424F;
+  border: 2px solid #7B424F;
+  color: #FFF5f0;
+  cursor: pointer;
+  justify-content: center;
+  border-radius: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "League Spartan";
+  margin-top: 20px;
   }
-  
-  .edit-store-form {
-      justify-content: center;
-      margin: auto;
-      text-align: center;
-  }
-  
-  .edit-store-btn {
-      align-items: center;
-      background-color: #7B424F;
-      border: 2px solid #7B424F;
-      color: #FFF5f0;
-      cursor: pointer;
-      justify-content: center;
-      border-radius: 100px;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-family: "League Spartan";
-      margin-top: 40px;
-    }
-  
-    .cancel-store-btn {
-      align-items: center;
-      background-color: #FFF5f0;
-      color: #7B424F;
-      cursor: pointer;
-      justify-content: center;
-      border-radius: 100px;
-      border: 2px solid #7B424F;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-family: "League Spartan";
-      margin-top: 40px;
-    }
-  
-  .store-link {
-    color: #7B424F;
-    font-family: "League Spartan";
-  }
+
+.cancel-store-btn {
+  align-items: center;
+  background-color: #FFF5f0;
+  color: #7B424F;
+  cursor: pointer;
+  justify-content: center;
+  border-radius: 100px;
+  border: 2px solid #7B424F;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: "League Spartan";
+  margin-top: 20px;
+}
+
+.store-link {
+  color: #7B424F;
+  font-family: "League Spartan";
+}
+
+.errors-msg {
+  color: black;
+  font-family: "League Spartan";
+}

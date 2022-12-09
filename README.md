@@ -1,144 +1,115 @@
-# Flask React Project
+# Stickers & Stories
+**Stickers-and-Stories-Project** is a site similar to [Etsy](https://www.etsy.com/), an ecommerce site that allows users to both purchase items and to sell them.
+**Stickers-and-Stories-Project** mirrors the base frontend and backend functionality of Etsy.
 
-This is the starter for the Flask React project.
+## Live site
+[Open Stickers-and-Stories-Project](https://stickersandstories.onrender.com/)
 
-## Getting started
-1. Clone this repository (only this branch)
+## Technologies Used
+### Frontend
+* Javascript
+* React
+* Redux
+* React Icons
+### Backend
+* PostgreSQL
+* Python
+* Flask
+* SQLAlchemy
 
-2. Install dependencies
+## To Get Started...
+1. Clone the repository
+```
+git clone https://github.com/KateCiz/Stickers-and-Stories-Project.git
+```
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+2. Install python dependencies
+```
+pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+```
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+3. Create a `.env` file based on the example provided
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+4. Setup your PostgreSQL credentials and database according to the variables set in .env
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+5. Active your pipenv then run the following command to open shell
+```
+pipenv shell
+```
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+6. Migrate the database
+```
+flask db upgrade
+```
 
-   ```bash
-   pipenv shell
-   ```
-
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
-
-
-## Deployment through Render.com
-
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
-
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
-
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
-
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
-
-### Part A: Configure the Start and Build Commands
-
-Start by giving your application a name.
-
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
+7. Seed the database
+```
 flask seed all
 ```
 
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
-
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
+8. Run the flask app
+```
+flask run
 ```
 
-### Part B: Add the Environment Variables
+9. Navigate to `react-app`
 
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
+10. Install dependencies
+```
+npm install
+```
 
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
+11. Start the frontend server
+```
+npm start
+```
 
-Add the following keys and values in the Render GUI form:
+The application will now be running at http://localhost:3000/
 
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
+# CRUD Features
 
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
+## User
+    On the site a user can:
+        - Log in
+        - Sign up
+        - Browse for items
+        - Use the DEMO USER login
 
-Add the following keys and values:
+## Stores
+    As a logged in user you can:
+        - Create a new store
+        - View your store and those created by others
+        - Edit your store
+        - Delete your store
 
-- DATABASE_URL (copy value from Internal Database URL field)
+## Items
+    A logged in user can:
+        - Create new items
+        - View your items and those created by others
+        - Edit your items
+        - Delete your items
 
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
 
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
+## Features
 
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
+### Splash Page
+#### <img width="545" alt="image" src="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670546069/Stories%20%2B%20Stickers/stickers_stories-splash-page_lgwzvj.png">
 
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
+### Sign Up Modal
+#### <img width="545" alt="image" src="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670546083/Stories%20%2B%20Stickers/stickers_stories-sign-up_ogqgo5.png">
 
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+### Store Page
+#### <img width="545" alt="image" src="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670546089/Stories%20%2B%20Stickers/stickers_stories-store-page_gqvjkj.png">
+
+* View an item
+#### <img width="545" alt="image" src="https://res.cloudinary.com/dymmlu1dw/image/upload/v1670546077/Stories%20%2B%20Stickers/stickers_stories-full-item-page_vsaihm.png">
+
+
+# Future Features
+
+This site is still being updated and completed, these features will be available in the future...
+
+-  Reviews CRUD
+-  Cart CRUD and checkout
+-  add a search bar to search for items
+-  Pagination for Feeds

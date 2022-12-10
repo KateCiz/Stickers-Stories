@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -14,16 +14,62 @@ const SignUpForm = ({exitModal, changePage}) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const [emailErrors, setEmailErrors] = useState(false);
+  const [imageUrlErrors, setImageUrlErrors] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
+  const [isValidLink, setIsValidLink] = useState(true);
+  const imgEndings = ["jpg", "svg", "png"];
+
+  useEffect(() => {
+    if(/\S+@\S+\.\S+/.test(email)){
+      setEmailErrors(false)
+    } else {
+      setEmailErrors(true)
+    }
+
+    if (imageUrl.length > 1) {
+      if (imageUrl.replaceAll(" ", "").length < 1) {
+        setImageUrlErrors(true);
+      }
+    }
+    if (imageUrl.length > 1) {
+      if (imageUrl.replaceAll(" ", "").length > 1) {
+        const ending = imageUrl.slice(-3);
+        if (!imgEndings.includes(ending)) {
+          setIsValidLink(false);
+        } else {
+          setIsValidLink(true);
+        }
+      }
+    } else {
+      setImageUrlErrors(false);
+    }
+  }, [imageUrl, email])
+
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, imageUrl, email, password));
-      if (data) {
-        setErrors(data)
+      if (emailErrors || imageUrlErrors || !isValidLink) {
+        setShowErrors(true);
+      }
+      if (!emailErrors && !imageUrlErrors && isValidLink) {
+        setShowErrors(false)
+        const data = await dispatch(signUp(username, email, imageUrl, password));
+        if (data) {
+          setErrors(data)
+        }
       }
     }
+
     if (password !== repeatPassword) {
-      setErrors(["password and confirm password must match"])
+      setErrors(["password and confirm password must match"]) 
+      if (emailErrors || imageUrlErrors || !isValidLink) {
+        setShowErrors(true);
+      }
+      if (!emailErrors && !imageUrlErrors && isValidLink) {
+        setShowErrors(false)
+      }
     }
   };
 
@@ -48,8 +94,23 @@ const SignUpForm = ({exitModal, changePage}) => {
       <form className="signup-form" onSubmit={onSignUp}>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className="errors-msg" key={ind}>{error}</div>
           ))}
+          {emailErrors && showErrors ? (
+            <div className="errors-msg">
+              <p>Email must be valid</p>
+            </div>
+          ) : null}
+          {imageUrlErrors && showErrors ? (
+            <div className="errors-msg">
+              <p>Image url must be at least 1 character</p>
+            </div>
+          ) : null}
+          {!isValidLink && showErrors ? (
+            <div className="errors-msg">
+              <p>Please enter an image url ending in .png, .jpg, or .svg</p>
+            </div>
+          ) : null}
         </div>
         <div>
           <label className="signup-label">Your email</label>

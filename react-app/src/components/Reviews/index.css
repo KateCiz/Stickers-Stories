@@ -1,0 +1,166 @@
+/* Item Review */
+
+.one-item-review {
+    display: block;
+    font-family: "League Spartan";
+    color: #7B424F;
+    margin-top: 20px;
+}
+
+.review-user-div {
+    display: flex;
+    align-items: center;
+}
+
+.review-username {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.review-created {
+    margin-left: 10px;
+    color: #c07083;
+}
+
+.delete-review-btn {
+    align-items: center;
+    background-color: #FFF5f0;
+    color: #7B424F;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 100px;
+    border: 2px solid #7B424F;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: "League Spartan";
+    margin-left: 10px;
+}
+
+.review-user-image-div {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.review-content-photo-div {
+    display: block;
+    align-items: center;
+}
+
+.item-review-rating {
+    margin-right: 5px;
+}
+
+.review-photo-div {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* Store Review */
+
+.one-store-review {
+    display: block;
+    font-family: "League Spartan";
+    color: #7B424F;
+    margin-top: 20px;
+}
+
+/* Review Form */
+
+.create-review {
+    color:#7B424F;
+    background-color: #FFF5f0;
+    border: 0;
+    font-family: "League Spartan"; 
+    font-size: 20px;
+  }
+  
+  .create-review-header {
+    color: #7B424F;
+    font-size: 30px;
+    font-family: "League Spartan";
+  }
+  
+  .create-review-content {
+    display: block;
+    width: 60%;
+    height: 60px;
+    margin: 5px auto 10px auto;
+    padding-bottom: 5px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid #7B424F;
+    border-radius: 20px;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  .create-review-input {
+      display: block;
+      width: 60%;
+      margin: 5px auto 10px auto;
+      padding-bottom: 5px;
+      font-size: 16px;
+      outline: none;
+      border: 1px solid #7B424F;
+      border-radius: 100px;
+      text-align: center;
+    }
+  
+  .create-review-label{
+      font-family: "League Spartan";
+      font-size: 20px;
+      margin: auto;
+  }
+  
+  .create-review-form {
+      justify-content: center;
+      margin: auto;
+      text-align: center;
+  }
+  
+  .create-review-btn {
+      align-items: center;
+      background-color: #7B424F;
+      border: 2px solid #7B424F;
+      color: #FFF5f0;
+      cursor: pointer;
+      justify-content: center;
+      border-radius: 100px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-family: "League Spartan";
+      margin-top: 20px;
+    }
+  
+    .cancel-review-btn {
+      align-items: center;
+      background-color: #FFF5f0;
+      color: #7B424F;
+      cursor: pointer;
+      justify-content: center;
+      border-radius: 100px;
+      border: 2px solid #7B424F;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-family: "League Spartan";
+      margin-top: 20px;
+    }
+  
+  .errors-msg {
+    color: black;
+    font-family: "League Spartan";
+  }
+

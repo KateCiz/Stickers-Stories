@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, NavLink } from "react-router-dom";
 import { getSingleStore } from "../../store/stores";
-// import StoreFeed from "../ItemFeed/StoreFeed";
+import StoreReview from "../Reviews/StoreReviews";
 import ItemPreview from "../ItemFeed/ItemPreview";
 import EditStoreModal from "../StoreCreate+Edit/EditStoreModal";
+import { getAllReviewsForStore } from "../../store/reviews";
 import './index.css';
 
 function StorePage() {
@@ -22,6 +23,24 @@ function StorePage() {
       }
     })();
   }, [dispatch]);
+
+
+  const reviews = Object.values(useSelector((state) => state.reviewState));
+  const [loaded, setLoaded] = useState(false)
+
+
+  useEffect(() => {
+    (async() => {
+      await dispatch(getAllReviewsForStore(storeId));
+      setLoaded(true);
+    })();
+  }, [dispatch]);
+
+
+  if (!loaded) {
+    return null;
+  }
+
 
   return (
     <div className="store-page-div">
@@ -58,7 +77,6 @@ function StorePage() {
 
       <div className="store-feed-div">
       <div className="store-feed-preview-items">
-        {/* {loaded && */}
           {store?.Items?.map((item, i) => {
             return (
               <div key={i}>
@@ -74,9 +92,15 @@ function StorePage() {
           })}
       </div>
     </div>
-      {/* <div>
-        <StoreReviews item={item} />
-      </div> */}
+    <div className="store-reviews-div">
+      <p className="store-reviews-header">Reviews: {store?.num_reviews}</p>
+        {loaded && reviews?.map((review, i) => {
+          console.log('store review', review)
+            return (
+              <StoreReview review={review}/>
+            )
+        })}
+    </div>
     </div>
   );
 }

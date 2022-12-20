@@ -1,13 +1,17 @@
-.full-page-item-div {
+.full-page-full-item-div {
     height: 100%;
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
-    display: flex;
+    display: block;
     align-items: center;
     margin-top: 100px;
 }
 
+.full-page-item-div {
+    display: flex;
+    border-bottom: 1px solid #cd9da9;
+}
 
 .full-page-item-img-div {
     width: 450px;
@@ -100,3 +104,14 @@
     text-decoration: none;
 }
 
+/* reviews */
+
+.item-reviews-div {
+    margin-left: 10%;
+    margin-bottom: 60px;
+}
+
+.item-reviews-header {
+    font-size: 25px;
+    font-family: "League Spartan";
+}

@@ -53,3 +53,15 @@
 .store-avg-review {
     font-family: "League Spartan";
 }
+
+/* reviews */
+
+.store-reviews-div {
+    margin-left: 10%;
+    margin-bottom: 60px;
+}
+
+.store-reviews-header {
+    font-size: 25px;
+    font-family: "League Spartan";
+}

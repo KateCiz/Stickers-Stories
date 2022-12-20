@@ -119,7 +119,7 @@ def get_item_reviews(item_id):
   item = Item.query.get(item_id)
   if item:
     reviews = [review.to_dict() for review in item.item_reviews]
-    return jsonify(reviews)
+    return jsonify({ 'Reviews': reviews}), 200
   else:
     return jsonify({'message': 'Item could not be found'}), 404
 

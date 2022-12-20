@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import session from './session';
 import itemReducer from './items';
 import storeReducer from './stores';
+import reviewsReducer from './reviews';
 
 
 const rootReducer = combineReducers({
   session,
   itemState: itemReducer,
-  storeState: storeReducer
+  storeState: storeReducer,
+  reviewState: reviewsReducer
 });
 
 

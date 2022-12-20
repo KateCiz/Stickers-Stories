@@ -96,7 +96,7 @@ def update_one_store(store_id):
 def get_store_reviews(store_id):
   store = Store.query.get(store_id)
   if store:
-    reviews = [review.to_dict() for review in store.store_reviews]
-    return jsonify(reviews)
+    # reviews = [review.to_dict() for review in store.store_reviews]
+    return jsonify({ 'Reviews': [review.to_dict() for review in store.store_reviews]}), 200
   else:
     return jsonify({'message': 'Store could not be found'}), 404

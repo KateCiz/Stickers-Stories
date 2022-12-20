@@ -151,10 +151,10 @@ def seed_items():
         content_type='sticker',
         store_id=3)
     item4 = Item(
-        name="Funny Hey Henzel Sticker",
+        name="Funny Hey Hensell Sticker",
         description="The laughter and shenanigans that are symbolized within the simple phase on this sticker will make any 2022 January Cohort student smile",
         price=0.99,
-        image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668539502/Stories%20%2B%20Stickers/Chill%20Shop/Hey_what_s_up_Henzel_lgsckz.png",
+        image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1671070933/Stories%20%2B%20Stickers/Chill%20Shop/Hey_what_s_up_Henzel_1_jbu2uq.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537655/Stories%20%2B%20Stickers/Chill%20Shop/1668312024529_kz0hlx.png",
         content_type='sticker',
         store_id=3)
@@ -371,7 +371,7 @@ def seed_reviews():
     review19 = Review(
         user_id=7, content='Wonderful!', star_rating=4, item_id=13, store_id=2)
     review20 = Review(
-        user_id=7, content='Just great! I got the whole Cute Coding collection and love how the stickers integrated with my digital planner.', star_rating=5, photo="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668569958/Stories%20%2B%20Stickerw_tafier.png", item_id=14, store_id=2)
+        user_id=7, content='Just great! I got the whole Cute Coding collection and love how the stickers integrated with my digital planner.', star_rating=5, photo="https://res.cloudinary.com/dymmlu1dw/image/upload/v1671248539/Stories%20%2B%20Stickers/Cute%20Coding/digital-planner-screenshot_dgsvx7.png", item_id=14, store_id=2)
     review21 = Review(
         user_id=7, content='How is it possible for a sticker to be this cute?!', star_rating=5, item_id=15, store_id=2)
     
@@ -411,7 +411,7 @@ def seed_reviews():
         user_id=5, content='Cool', star_rating=4, item_id=20, store_id=1)
 
     review36 = Review(
-        user_id=5, content='So chill. I love the vibes man. Totally sending Zazzle t-shirts with these stickers to all my friends for the holidays.', star_rating=5, photo="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668569108/Stories%20%2B%20Stickers/Chill%20Shop/henzel-tshirt_colka5.png", item_id=4, store_id=2)
+        user_id=5, content='So chill. I love the vibes man. Totally sending Zazzle t-shirts with these stickers to all my friends for the holidays.', star_rating=5, photo="https://res.cloudinary.com/dymmlu1dw/image/upload/v1671071058/Stories%20%2B%20Stickers/Chill%20Shop/hensell-t-shirt_pba7h9.png", item_id=4, store_id=3)
 
     #user8
     review37 = Review(
@@ -429,8 +429,7 @@ def seed_reviews():
         user_id=8, content='Very cool', star_rating=4, item_id=20, store_id=1)
 
     review43 = Review(
-        user_id=8, content='Perfect stickers to help spice up my Instagram feed!', star_rating=5, photo="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668569090/Stories%20%2B%20Stickers/Chill%20Shop/foodie1234_r4hgt7.png", item_id=1, store_id=2)
-
+        user_id=8, content='Perfect stickers to help spice up my Instagram feed!', star_rating=5, photo="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668569090/Stories%20%2B%20Stickers/Chill%20Shop/foodie1234_r4hgt7.png", item_id=1, store_id=3)
 
 
     db.session.add(review1)

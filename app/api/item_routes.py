@@ -130,7 +130,6 @@ def create_item_review(item_id):
   current_user_id = int(current_user.is_authenticated) and current_user.id
   item = Item.query.get(item_id)
   form = ReviewForm()
-  print(form.data)
   if item:
     if form.validate_on_submit:
       review = Review(

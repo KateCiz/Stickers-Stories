@@ -77,7 +77,7 @@ function FullItemPage() {
         {loggedInUser && (item?.Reviews?.filter(review => review?.user?.id === loggedInUser.id).length === 0) && <ReviewModal />}
         {item?.Reviews?.map((review, i) => {
           return (
-            <ItemReview review={review} />
+            <ItemReview key={i} review={review} />
           )
         })}
       </div>

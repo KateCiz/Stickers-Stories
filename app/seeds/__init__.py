@@ -1,6 +1,6 @@
 from flask.cli import AppGroup
 # from .users import seed_users, undo_users
-from .all_new_seeds import seed_users, undo_users, seed_stores, undo_stores, seed_reviews, undo_reviews, seed_items, undo_items
+from .all_new_seeds import seed_users, undo_users, seed_stores, undo_stores, seed_reviews, undo_reviews, seed_items, undo_items, seed_carts, undo_carts
 
 from app.models.db import db, environment, SCHEMA
 
@@ -29,22 +29,19 @@ def seed():
 
         db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
         db.session.commit()
+
+        db.session.execute(f"TRUNCATE table {SCHEMA}.carts RESTART IDENTITY CASCADE;")
+        db.session.commit()
     seed_users()
     # Add other seed functions here
-    # undo_stores()
-    # db.session.execute(f"TRUNCATE table {SCHEMA}.stores RESTART IDENTITY CASCADE;")
-    # db.session.commit()
+   
     seed_stores()
 
-    # undo_items()
-    # db.session.execute(f"TRUNCATE table {SCHEMA}.items RESTART IDENTITY CASCADE;")
-    # db.session.commit()
     seed_items()
 
-    # undo_reviews()
-    # db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
-    # db.session.commit()
     seed_reviews()
+
+    seed_carts()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
@@ -54,3 +51,5 @@ def undo():
     undo_stores()
     undo_items()
     undo_reviews()
+    undo_carts()
+

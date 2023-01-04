@@ -14,6 +14,7 @@ import { authenticate } from './store/session';
 import ShopAllFeed from './components/ItemFeed/ShopAllFeed';
 import Footer from './components/Footer/footer';
 import AboutMe from './components/AboutPage/AboutMe';
+import CartPage from './components/Cart/CartPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,7 +62,10 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <ShopAllFeed />
-        </Route> 
+        </Route>
+        <Route path='/carts/:cartId'>
+          <CartPage />
+        </Route>
         <Route path='/about' exact={true}>
           <AboutMe />
         </Route>

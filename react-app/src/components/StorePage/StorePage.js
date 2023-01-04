@@ -95,7 +95,6 @@ function StorePage() {
     <div className="store-reviews-div">
       <p className="store-reviews-header">Reviews: {store?.num_reviews}</p>
         {loaded && reviews?.map((review, i) => {
-          console.log('store review', review)
             return (
               <StoreReview review={review}/>
             )

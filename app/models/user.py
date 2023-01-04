@@ -36,7 +36,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            # 'current_cart': self.get_current_cart(),
+            'current_cart': self.get_current_cart(),
             'image_profile_url': self.image_profile_url,
             'store_id': self.get_store_id()
         }

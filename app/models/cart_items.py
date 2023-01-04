@@ -16,3 +16,9 @@ class Cart_Item(db.Model):
     items_in_cart = db.relationship("Item", back_populates = 'cart_items')
 
     # these relationships might cause issues if they aren't right
+
+    def cart_item_to_dict(self):
+        return {
+            'id': self.id,
+            'Item': self.items_in_cart.cart_item_to_dict()
+        }

@@ -79,3 +79,24 @@
     border-radius: 100px;
     font-family: "League Spartan";
 }
+
+.cart-icon {
+    margin-right: 20px;
+    height: 20px;
+    width: auto;
+}
+
+.cart-item-count {
+    position: absolute;
+    top: 5px;
+    right: 17px;
+    background-color: #7B424F;
+    color: #fff5f0;
+    font-size: 12px;
+    text-align: center;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    z-index: 10;
+    padding: 2px;
+}

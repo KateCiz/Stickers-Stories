@@ -59,8 +59,6 @@ function CreateReviewForm({ exitModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('photo errors', photoErrors)
-        console.log('valid link', isValidLink)
 
         if (contentErrors || photoErrors || !isValidLink) {
             setShowErrors(true);

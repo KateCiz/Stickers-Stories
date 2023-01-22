@@ -4,6 +4,10 @@ from app.models import db, Cart, Item, User, Cart_Item
 from sqlalchemy.orm import joinedload
 from datetime import datetime
 
+
+import stripe
+stripe.api_key = "sk_test_51M3OooDVmTpUEfT54GvKtvkNLNaX0QyPedQUyKB9Of80VkJZ2FxjULYiavwafiCQSyljIbHBdyXZeot7Z7W5zlEM00RNC2jZz9"
+
 cart_routes = Blueprint('carts', __name__)
 
 # create a cart
@@ -29,9 +33,38 @@ def get_one_store(cart_id):
     if cart:
         if cart.user_id == current_user.id:
             cart_obj = cart.to_dict()
+
+            # session = stripe.checkout.Session.retrieve("cs_test_a1PJJPywVbZfGVanLyC2IbMzGmUhu9Tj7Qo3hAyafLQX6sWS8wPZ2NHboI")
+
+            date = datetime.now()
+            start_time_seconds = int(date.timestamp()) - 900
+
+            events = stripe.Event.list(created=start_time_seconds)
+
+            # event2 = event['data']
+            # event3 = event2[0]
+            # event4 = event3['data']
+            # event5 = event4['object']
+            # object_listed_on_stripe = event5['object']
+
+            # payment_intent = event['data'][0]['data']['object']['payment_intent']
+
+            # object_listed_on_stripe = event['data'][0]['data']['object']['object']
+
+
+
+            print('EVENT TYPEs EVENT TYPEs', events)
+            # payment_id = session.payment_intent
+            # payment = stripe.Charge.retrieve(payment_id)
+            # status = payment.status
+            # if status == "succeeded":
+            # # for order in orders.data:
+            #     print('CART IS PAID AND CHECKED OUT')
             return jsonify(cart_obj), 200
         else:
             return jsonify({'message': 'Cart could not be found'}), 404
+
+
 
 # add item to cart
 @cart_routes.route('/<int:cart_id>/add_item/<int:item_id>', methods=['POST'])

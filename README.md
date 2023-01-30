@@ -83,10 +83,16 @@ The application will now be running at http://localhost:3000/
         - Delete your store
 
 ## Items
-    A logged in user can:
+    As logged in user you can:
         - Create new items
         - View your items and those created by others
         - Edit your items
+        - Delete your items
+        
+## Reviews
+    As logged in user you can:
+        - Create new reviews for items
+        - View your reviews and those created by others
         - Delete your items
 
 
@@ -109,7 +115,7 @@ The application will now be running at http://localhost:3000/
 
 This site is still being updated and completed, these features will be available in the future...
 
--  Reviews CRUD
+-  Make reviews updatable
 -  Cart CRUD and checkout
 -  add a search bar to search for items
 -  Pagination for Feeds

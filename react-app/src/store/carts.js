@@ -125,7 +125,9 @@ export const editCart = (id) => async (dispatch) => {
 
   if (res.ok) {
     const updatedCart = await res.json();
-    dispatch(updateCart(updatedCart));
+    console.log('updateCart', updatedCart)
+    console.log('updateCart.data', updatedCart.data)
+    dispatch(updateCart(updatedCart.data));
     return res;
   }
 };
@@ -179,15 +181,16 @@ export default function cartReducer(state = initialState, action) {
       newState.currentCart = {...action.cart}
       return newState;
     case CREATE_CART:
-      newState.carts[action.cart.id] = {...action.cart};
+      newState.carts = {};
+      newState.carts[action.cart.id] = action.cart;
       return newState;
     case ADD_ITEM_TO_CART:
       newState.currentCart = {...action.cart}
-      // newState.cart[action.cart.id] = action.cart;
+      // newState.cart[action.cart.id] = action.cart; this snytax doesn't work 
       return newState;
     case UPDATE_CART:
       newState.currentCart = {...action.cart}
-      newState.cart[action.cart.id] = {...action.cart};
+      // newState.cart[action.cart.id] = {...action.cart};
       return newState;
     case DELETE_CART:
       delete newState.cart[action.cartId];

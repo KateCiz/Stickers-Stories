@@ -13,6 +13,8 @@ class Item(db.Model):
     image_url = db.Column(db.String(300), nullable=False)
     content = db.Column(db.String(), nullable=False)
     content_type = db.Column(db.String(), nullable=False)
+    stripe_price_key = db.Column(db.String(), nullable=False)
+    stripe_product_id = db.Column(db.String(), nullable=False)
     store_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('stores.id')), nullable=False)
     created_date = db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
     updated_date = db.Column(db.DateTime, default=datetime.datetime.now, nullable=False)
@@ -103,3 +105,9 @@ class Item(db.Model):
             'updated_date': self.updated_date,
             'Store': self.store.preview_store_to_dict()
         }
+
+    def checkout_item_to_dict(self):
+      return {
+          'price': self.stripe_price_key,
+          'quantity': 1
+      }

@@ -133,6 +133,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668539506/Stories%20%2B%20Stickers/Chill%20Shop/Chipotle_Streak_x0vfg5.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537661/Stories%20%2B%20Stickers/Chill%20Shop/1668452929078_nx0iqp.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YZjDVmTpUEfT5TxBKmEZV',
+        stripe_product_id='prod_MoAvhWS0KAGrUK',
         store_id=3)
     item2 = Item(
         name="Baylen's Checklist Sticker",
@@ -141,6 +143,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668539496/Stories%20%2B%20Stickers/Chill%20Shop/BAYLEN_S_CHECKLIST_hgy9vg.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537692/Stories%20%2B%20Stickers/Chill%20Shop/1668309872004_zjgurd.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YazDVmTpUEfT5JAl7Ucyg',
+        stripe_product_id='prod_MoAwxnvqeR8r4a',
         store_id=3)
     item3 = Item(
         name="Classic NOICE Sticker",
@@ -149,6 +153,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668539499/Stories%20%2B%20Stickers/Chill%20Shop/h1_sjhiwa.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537633/Stories%20%2B%20Stickers/Chill%20Shop/1668311374457_gr8mfx.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YbcDVmTpUEfT5V7nBNcGZ',
+        stripe_product_id='prod_MoAx1WPPtrddaK',
         store_id=3)
     item4 = Item(
         name="Funny Hey Hensell Sticker",
@@ -157,6 +163,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1671070933/Stories%20%2B%20Stickers/Chill%20Shop/Hey_what_s_up_Henzel_1_jbu2uq.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537655/Stories%20%2B%20Stickers/Chill%20Shop/1668312024529_kz0hlx.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YcSDVmTpUEfT5oV2lXCbe',
+        stripe_product_id='prod_MoAyyATkiKjT77',
         store_id=3)
     item5 = Item(
         name="Starbucks Music Sticker",
@@ -165,6 +173,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668539492/Stories%20%2B%20Stickers/Chill%20Shop/Starbucks_Music_bfx6co.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537686/Stories%20%2B%20Stickers/Chill%20Shop/1668308937536_mg6fad.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YdYDVmTpUEfT52egbyxht',
+        stripe_product_id='prod_MoAzVX7NcqgD8f',
         store_id=3)
     item6 = Item(
         name="Men Cry Too Sticker",
@@ -173,6 +183,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668553925/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/men_fchlr4.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537733/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/1668481158056_ngu6bc.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YeQDVmTpUEfT5tYbES8s5',
+        stripe_product_id='prod_MoB02ntYd9OOaF',
         store_id=4)
     item7 = Item(
         name="Man in the Shadows Sticker",
@@ -181,6 +193,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668553919/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/MAN_iwvehm.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537740/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/1668480907579_kk9shu.png",
         content_type='sticker',
+        stripe_price_key='price_1M4Yf9DVmTpUEfT5zdddfrY3',
+        stripe_product_id='prod_MoB1B0DwY7Veam',
         store_id=4)
     item8 = Item(
         name="Panda Express Sticker",
@@ -189,6 +203,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668553922/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/express_jbvn2l.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537710/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/1668481076098_gxsyrm.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YfnDVmTpUEfT5tWDxdlSi',
+        stripe_product_id='prod_MoB1o9lh0qHsFd',
         store_id=4)
     item9 = Item(
         name="Hacking Sticker",
@@ -197,6 +213,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668553916/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/HACKING_qyvbn0.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537727/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/1668480762994_lidjkq.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YgODVmTpUEfT59CfDSsyb',
+        stripe_product_id='prod_MoB2HXCqJpSMmx',
         store_id=4)
     item10 = Item(
         name="Night Mode All Day Sticker",
@@ -205,6 +223,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668553928/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/NIGHT_MODE_ALL_DAY_xwxufs.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537716/Stories%20%2B%20Stickers/Vampires%20%2B%20Code/1668479896867_wadqtd.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YhBDVmTpUEfT5Eqz0sHLk',
+        stripe_product_id='prod_MoB3cC3ws8Uoby',
         store_id=4)
     item11 = Item(
         name="Saturday Class Marathon Sticker",
@@ -213,6 +233,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668554436/Stories%20%2B%20Stickers/Cute%20Coding/Saturday_Marathon_ttignr.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537604/Stories%20%2B%20Stickers/Cute%20Coding/1668480197132_xiw6ny.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YjUDVmTpUEfT5kJvdTcmZ',
+        stripe_product_id='prod_MoB5VDWpi0fgmm',
         store_id=2)
     item12 = Item(
         name="Winter Break HTML Sticker",
@@ -221,6 +243,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668575294/Stories%20%2B%20Stickers/Cute%20Coding/App_Academy_2_dieaci.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668645108/Stories%20%2B%20Stickers/Cute%20Coding/1668575836646_jloamg.png", 
         content_type='sticker',
+        stripe_price_key='price_1M4YipDVmTpUEfT5tanz6x6f',
+        stripe_product_id='prod_MoB451A0F02CYz',
         store_id=2)
     item13 = Item(
         name="Night Themed App Academy Part Time Sticker",
@@ -229,6 +253,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668554438/Stories%20%2B%20Stickers/Cute%20Coding/Copy_of_Your_paragraph_text_onumnn.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537608/Stories%20%2B%20Stickers/Cute%20Coding/1668480358869_hg2ssu.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YkIDVmTpUEfT5f954r1uz',
+        stripe_product_id='prod_MoB6auBf1Tw7FY',
         store_id=2)
     item14 = Item(
         name="Women Code Sticker",
@@ -237,6 +263,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668554444/Stories%20%2B%20Stickers/Cute%20Coding/Women_Code_jk41cy.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537613/Stories%20%2B%20Stickers/Cute%20Coding/1668481244602_oycft1.png",
         content_type='sticker',
+        stripe_price_key='price_1M4YhoDVmTpUEfT55Ogj8ltw',
+        stripe_product_id='prod_MoB3GrC18gCrLW',
         store_id=2)
     item15 = Item(
         name="Cute App Academy Sticker",
@@ -245,6 +273,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668554473/Stories%20%2B%20Stickers/Cute%20Coding/App_Academy_1_qvp8vv.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668537624/Stories%20%2B%20Stickers/Cute%20Coding/1668481352819_dryugv.png",
         content_type='sticker',
+        stripe_price_key='price_1M4Yl3DVmTpUEfT5vjiA0oWO',
+        stripe_product_id='prod_MoB7wfqa00uInu',
         store_id=2)
     item16 = Item(
         name="Demo Story",
@@ -253,6 +283,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668556479/Stories%20%2B%20Stickers/Demo/test-story_cshgio.png",
         content="https://docs.google.com/document/d/1FR3fvibNIaP_d4D2OicQ-JVAVhw7PJJuoA8Yw_9yNeY/edit?usp=sharing",
         content_type='story',
+        stripe_price_key='price_1M4ZCsDVmTpUEfT5p9p4iiqU',
+        stripe_product_id='prod_MoBaYhODbK7OUu',
         store_id=1)
     item17 = Item(
         name="Cinderella Demo Story",
@@ -261,6 +293,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668556434/Stories%20%2B%20Stickers/Cute%20Coding/one-more-cinderella-story_qsq3tl.png",
         content="https://docs.google.com/document/d/1fOKXwiqrPAa1mOyrbaGUA-LTQlnFsnVyTWu9R4IKdPg/edit?usp=sharing",
         content_type='story',
+        stripe_price_key='price_1M4ZDwDVmTpUEfT5nW4leSLK',
+        stripe_product_id='prod_MoBbAagAKZvlfy',
         store_id=1)
     item18 = Item(
         name="Demo Sticker GRAY",
@@ -269,6 +303,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668557208/Stories%20%2B%20Stickers/Demo/DEMO_STICKER_opcrqr.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668557266/Stories%20%2B%20Stickers/Demo/1668557112852_uqfq9w.png",
         content_type='sticker',
+        stripe_price_key='price_1M4ZBpDVmTpUEfT5933LgL2s',
+        stripe_product_id='prod_MoBYs7Ttp8iLPa',
         store_id=1)
     item19 = Item(
         name="Demo Sticker BLUE",
@@ -277,6 +313,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668623009/Stories%20%2B%20Stickers/Demo/DEMO_STICKER_BLUE_1_o2aqlw.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668642288/Stories%20%2B%20Stickers/Demo/1668642120625_itluzv.png",
         content_type='sticker',
+        stripe_price_key='price_1M4qFPDVmTpUEfT53nk3pduW',
+        stripe_product_id='prod_MoTBSeenCDCToe',
         store_id=1)
     item20 = Item(
         name="Demo Sticker RED",
@@ -285,6 +323,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668623016/Stories%20%2B%20Stickers/Demo/DEMO_STICKER_RED_qkzwt1.png",
         content="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668642292/Stories%20%2B%20Stickers/Demo/1668642209149_mbgkdf.png",
         content_type='sticker',
+        stripe_price_key='price_1M4qJODVmTpUEfT5TLfA8FHl',
+        stripe_product_id='prod_MoTFglriYjR15v',
         store_id=1)
     item21 = Item(
         name="Join Couple on Mardi Gras Short Story",
@@ -293,6 +333,8 @@ def seed_items():
         image_url="https://res.cloudinary.com/dymmlu1dw/image/upload/v1668622162/Stories%20%2B%20Stickers/Cute%20Coding/Cute_Coding_2_oslsth.png",
         content="https://docs.google.com/document/d/1jc5uTkHGVLuIO8VNpSmLPQGbJn5JjwcqknUk54gZpzM/edit?usp=sharing",
         content_type='story',
+        stripe_price_key='price_1M4dY5DVmTpUEfT5NMM0sX6E',
+        stripe_product_id='prod_MoG4YUqxtlCsst',
         store_id=2)
     
   
@@ -491,6 +533,7 @@ def seed_carts():
     cart6 = Cart(user_id=6, checked_out=False)
     cart7 = Cart(user_id=7, checked_out=False)
     cart8 = Cart(user_id=8, checked_out=False)
+    cart9 = Cart(user_id=9, checked_out=False)
 
     db.session.add(cart1)
     db.session.add(cart2)
@@ -500,6 +543,7 @@ def seed_carts():
     db.session.add(cart6)
     db.session.add(cart7)
     db.session.add(cart8)
+    db.session.add(cart9)
     db.session.commit()
 
 def undo_carts():

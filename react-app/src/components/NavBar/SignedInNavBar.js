@@ -12,10 +12,14 @@ const SignedInNavBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const loggedInUser = useSelector(state => state.session.user);
+  let checkout_id = loggedInUser?.current_cart?.checkout_session_id;
   
   useEffect(() => {
     dispatch(getSingleCart(loggedInUser?.current_cart?.id))
-  },[dispatch]);
+    // if(current_cart.checkout_session_id !== null){
+    //   dispatch(getSingleCart(loggedInUser?.current_cart?.id))
+    // }
+  },[dispatch, checkout_id]);
   
   const current_cart = useSelector(state => state.cartState.currentCart);
 

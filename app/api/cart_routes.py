@@ -1,11 +1,11 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, redirect, abort, make_response
 from flask_login import login_required, current_user
 from app.models import db, Cart, Item, User, Cart_Item
 from sqlalchemy.orm import joinedload
 from datetime import datetime
-
-
+import json
 import stripe
+
 stripe.api_key = "sk_test_51M3OooDVmTpUEfT54GvKtvkNLNaX0QyPedQUyKB9Of80VkJZ2FxjULYiavwafiCQSyljIbHBdyXZeot7Z7W5zlEM00RNC2jZz9"
 
 cart_routes = Blueprint('carts', __name__)
@@ -14,10 +14,10 @@ cart_routes = Blueprint('carts', __name__)
 @cart_routes.route('/', methods=['POST'])
 @login_required
 def create_cart():
-    form['csrf_token'].data = request.cookies['csrf_token']
     if current_user:
         cart = Cart(
-            user_id=current_user.id
+            user_id=current_user.id,
+            checked_out=False
         )
         db.session.add(cart)
         db.session.commit()
@@ -33,33 +33,6 @@ def get_one_store(cart_id):
     if cart:
         if cart.user_id == current_user.id:
             cart_obj = cart.to_dict()
-
-            # session = stripe.checkout.Session.retrieve("cs_test_a1PJJPywVbZfGVanLyC2IbMzGmUhu9Tj7Qo3hAyafLQX6sWS8wPZ2NHboI")
-
-            date = datetime.now()
-            start_time_seconds = int(date.timestamp()) - 900
-
-            events = stripe.Event.list(created=start_time_seconds)
-
-            # event2 = event['data']
-            # event3 = event2[0]
-            # event4 = event3['data']
-            # event5 = event4['object']
-            # object_listed_on_stripe = event5['object']
-
-            # payment_intent = event['data'][0]['data']['object']['payment_intent']
-
-            # object_listed_on_stripe = event['data'][0]['data']['object']['object']
-
-
-
-            print('EVENT TYPEs EVENT TYPEs', events)
-            # payment_id = session.payment_intent
-            # payment = stripe.Charge.retrieve(payment_id)
-            # status = payment.status
-            # if status == "succeeded":
-            # # for order in orders.data:
-            #     print('CART IS PAID AND CHECKED OUT')
             return jsonify(cart_obj), 200
         else:
             return jsonify({'message': 'Cart could not be found'}), 404
@@ -117,19 +90,34 @@ def delete_item_from_cart(cart_id, item_id):
 @cart_routes.route('/<int:cart_id>/update', methods=['PUT'])
 @login_required
 def update_cart_status(cart_id):
-    if request.method == 'PUT':
-        cart = Cart.query.filter(Cart.id == cart_id).first()
-        if cart:
-            if cart.user_id == current_user.id:
-                cart.checked_out = True
-                    # cart.updated_date = datetime.now()
-                db.session.add(cart)
-                db.session.commit()
-                return jsonify(cart.to_dict()), 200
-            else:
-                return jsonify({'message': 'Users can only update their own cart'}), 403
+    cart = Cart.query.filter(Cart.id == cart_id).first()
+    if cart:
+        if cart.user_id == current_user.id:
+            if not cart.checkout_session_id == None:
+                session = stripe.checkout.Session.retrieve(cart.checkout_session_id)
+                # print('SESSION SESSION SESSION OBJ Status After useing dumb code', session)
+                if not session['payment_intent'] == None:
+                    payment_intent_object = stripe.PaymentIntent.retrieve(session['payment_intent'])
+                    if payment_intent_object['status'] == 'succeeded':
+                        print('CART 1 CART 1 CART 1 CART 1 CART 1 CART 1', cart)
+                        cart.checked_out=True
+                        print('CART 2 CART 2 CART 2 CART 2 CART 2 CART 2', cart)
+                        db.session.add(cart)
+                        print('CART 3 CART 3 CART 3 CART 3 CART 3 CART 3', jsonify(cart.to_dict()))
+                        db.session.commit()
+                        cart_obj = cart.to_dict()
+                        print('CART 4 CART 4 CART 4 CART 4 CART 4 CART 4', cart_obj)
+                        return make_response(jsonify({"status": "ok", "data": cart_obj}), 200)
+                    else: 
+                        return jsonify({'message': 'Carts can only be updated if they have been paid for'}), 403
+                else: 
+                    return jsonify({'message': 'Carts can only be updated if they have been paid for'}), 403
+            else: 
+                return jsonify({'message': 'Carts can only be updated if they have been checked out'}), 403
         else:
-            return jsonify({'message': 'Cart could not be found'}), 404
+            return jsonify({'message': 'Users can only update their own cart'}), 403
+    else:
+        return jsonify({'message': 'Cart could not be found'}), 404
 
 # delete entire cart       
 @cart_routes.route('/<int:item_id>/delete', methods=['DELETE'])
@@ -145,3 +133,37 @@ def delete_cart(cart_id):
                 return jsonify({'message': 'Users can only delete their own cart'}), 403
         else:
             return jsonify({'message': 'Cart could not be found'}), 404
+
+#create checkout session
+TEST_DOMAIN = 'http://localhost:3000/'
+
+TEST_ERROR_DOMAIN = 'http://localhost:3000/items/2'
+
+stripe.api_key = 'sk_test_51M3OooDVmTpUEfT54GvKtvkNLNaX0QyPedQUyKB9Of80VkJZ2FxjULYiavwafiCQSyljIbHBdyXZeot7Z7W5zlEM00RNC2jZz9'
+
+@cart_routes.route('/<int:cart_id>/create_checkout', methods=['POST'])
+@login_required
+def create_checkout_session(cart_id):
+    cart = Cart.query.filter(Cart.id == cart_id).first()
+    if cart:
+        if cart.user_id == current_user.id:
+            cart_obj = cart.checkout_cart_to_dict()
+            cart_items = [item['Item'] for item in cart_obj['Items']]
+    
+            checkout_session = stripe.checkout.Session.create(
+                line_items = cart_items,
+                mode='payment',
+                success_url=TEST_DOMAIN,
+                cancel_url=TEST_ERROR_DOMAIN
+            )
+
+            cart.checkout_session_id=checkout_session.id
+            # print('IDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDIDID', checkout_session.id)
+            db.session.add(cart)
+            db.session.commit()
+            # print('CHECKOUT CHECKOUT CHECKOUT OBJ', checkout_session)
+            return jsonify({'session_url': checkout_session.url}), 200
+        else: 
+            return jsonify({'message': 'Users can only checkout with their own cart'}), 403 
+    else:
+        return jsonify({'message': 'Cart could not be found'}), 404

@@ -58,6 +58,8 @@ def upgrade():
     sa.Column('content', sa.String(), nullable=False),
     sa.Column('content_type', sa.String(), nullable=False),
     sa.Column('store_id', sa.Integer(), nullable=False),
+    sa.Column('stripe_price_key', sa.Integer(), nullable=False),
+    sa.Column('stripe_product_id', sa.Integer(), nullable=False),
     sa.Column('created_date', sa.DateTime(), nullable=False),
     sa.Column('updated_date', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['store_id'], ['stores.id'], ),

@@ -38,7 +38,7 @@ function CreateItemForm() {
     } else {
       setDescriptErrors(false);
     }
-    if (price.replaceAll(" ", "").length < 1 || !Number(price)) {
+    if (price.replaceAll(" ", "").length < 1 || !Number(price) || price.includes(".")) {
         setPriceErrors(true);
       } else {
         setPriceErrors(false);
@@ -123,6 +123,7 @@ function CreateItemForm() {
                 <p className='item-tips-into'>Hi, when creating a new item here are a few tips!</p>
                 <p>1. All image urls - including sticker content urls - must end in .png, .jpg, or .svg</p>
                 <p>2. Content urls for stories must be shared links from a Google Document</p>
+                <p>3. All prices must be whole numbers - no decimals</p>
               </div>
               <div className='item-input-div'>
                 {nameErrors && showErrors ? (

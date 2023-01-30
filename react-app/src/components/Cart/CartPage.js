@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getSingleCart } from "../../store/carts";
+import { csrfFetch } from "../../store/csrf";
 import CartItem from "./CartItem";
 import './index.css';
 
@@ -32,6 +33,15 @@ function CartPage(){
     if(loaded && !loggedInUser){
         history.push('/')
     }
+
+    const goToCheckout = (async () => {
+        const res = await csrfFetch(`/api/carts/${current_cart?.id}/create_checkout`, {
+            method: "POST",
+        })
+ 
+        const checkout_url = await res.json();
+        window.location.replace(checkout_url.session_url);
+    })
   
     return (
         <div className="cart-items-page">
@@ -48,7 +58,7 @@ function CartPage(){
                 <p>${CartTotal.toFixed(2)}</p>
                 <p>After Taxes</p>
                 <p>${(CartTotal*1.1).toFixed(2)}</p>
-                {/* <button className="checkout-btn">Checkout</button> */}
+                <button className="checkout-btn" onClick={goToCheckout}>Checkout</button>
             </div>}
         </div> 
     );

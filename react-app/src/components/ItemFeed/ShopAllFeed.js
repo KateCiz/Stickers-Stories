@@ -1,19 +1,31 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllItems } from "../../store/items"
 import ItemPreview from "./ItemPreview";
+import { editCart, createNewCart } from "../../store/carts";
+import * as sessionActions from '../../store/session';
 import './preview.css';
 
 function ShopAllFeed() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const items = Object.values(useSelector((state) => state.itemState));
+    const loggedInUser = useSelector(state => state.session.user);
+    // const cart = useSelector((state => state.cartState));
     const [loaded, setLoaded] = useState(false)
 
 
     useEffect(() => {
       (async() => {
         await dispatch(getAllItems());
+        if(loggedInUser && loggedInUser.current_cart.checkout_session_id !== null){
+          await dispatch(editCart(loggedInUser.current_cart.id))
+          .then(() => dispatch(createNewCart()))
+          .then(() => {dispatch(sessionActions.authenticate())})
+          .then(() => {history.push('/')})
+          
+        }
         setLoaded(true);
       })();
     }, [dispatch]);

@@ -22,3 +22,8 @@ class Cart_Item(db.Model):
             'id': self.id,
             'Item': self.items_in_cart.cart_item_to_dict()
         }
+
+    def checked_out_cart_item_to_dict(self):
+       return {
+           'Item': self.items_in_cart.checkout_item_to_dict()
+       }

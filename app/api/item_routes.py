@@ -4,6 +4,8 @@ from app.forms import ItemEditorForm, ReviewForm
 from app.models import db, Item, User, Review, Store
 from sqlalchemy.orm import joinedload
 from datetime import datetime
+import stripe
+stripe.api_key = 'sk_test_51M3OooDVmTpUEfT54GvKtvkNLNaX0QyPedQUyKB9Of80VkJZ2FxjULYiavwafiCQSyljIbHBdyXZeot7Z7W5zlEM00RNC2jZz9'
 
 item_routes = Blueprint('items', __name__)
 
@@ -39,21 +41,42 @@ def create_item():
     form = ItemEditorForm() # look into this line
     form['csrf_token'].data = request.cookies['csrf_token']
     if not current_user.get_store_id() == "null":
-        if form.validate_on_submit():
-            item = Item(
-                name=form.data['name'],
-                description=form.data['description'],
-                price=form.data['price'],
-                image_url=form.data['image_url'],
-                content=form.data['content'],
-                content_type=form.data['content_type'],
-                store_id=current_user.get_store_id()
+        stripeProduct = stripe.Product.create(
+            name=form.data['name'],
+            description=form.data['description'],
+            # image_url=form.data['image_url']
+        )
+        print('STRIPE STRIPE STRIPE STRIPE STRIPE', stripeProduct)
+        if stripeProduct:
+            stripePrice = stripe.Price.create(
+                #have to put in logic to fix this bug, unit amount cannot have any puncuation or it errors, must convert form data into parsable int
+                #update: temp fixed with price validation on front end, but not the most ideal
+                unit_amount_decimal=(form.data['price']*100), 
+                currency="usd",
+                product=str(stripeProduct['id'])
             )
-            db.session.add(item)
-            db.session.commit()
-            return item.to_dict()
-        else:
-            return jsonify({'message': 'To create an item ALL fields must be filled out'}), 400 # need to have better backend validation
+            # print('PRICE PRICE PRICE PRICE PRICE', stripePrice['id'])
+            if form.validate_on_submit():
+                if stripePrice['id']:
+                    item = Item(
+                        name=form.data['name'],
+                        description=form.data['description'],
+                        price=form.data['price'],
+                        image_url=form.data['image_url'],
+                        content=form.data['content'],
+                        content_type=form.data['content_type'],
+                        stripe_price_key=stripePrice['id'],
+                        stripe_product_id=stripeProduct['id'],
+                        store_id=current_user.get_store_id()
+                    )
+                    db.session.add(item)
+                    db.session.commit()
+                    return item.to_dict()
+                else:
+                    return jsonify({'message': 'stripe product could not be created'}), 404
+        # else:
+        #     # need to have better backend validation
+        #     return jsonify({'message': 'To create an item ALL fields must be filled out'}), 400
     else:
         return jsonify({'message': 'To create an item you must first create a store'}), 400
         

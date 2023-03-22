@@ -16,6 +16,7 @@ function CreateItemForm() {
     const [content, setContent] = useState('');
     const [contentType, setContentType] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+    const [imageUrlLoading, setImageUrlLoading] = useState(false)
 
     const [nameErrors, setNameErrors] = useState(false);
     const [descriptErrors, setDescriptErrors] = useState(false);
@@ -92,32 +93,53 @@ function CreateItemForm() {
         history.push('/')
       };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (nameErrors || descriptErrors || priceErrors || contentErrors || imageUrlErrors || !isValidContentLink || !isValidLink) {
             setShowErrors(true);
+            setImageUrlLoading(false);
           }
       
           if (!nameErrors && !descriptErrors && !priceErrors && !contentErrors && !imageUrlErrors && isValidContentLink && isValidLink) {
-            let item = {
-                name,
-                description,
-                price,
-                content,
-                content_type: contentType,
-                image_url: imageUrl
-            };
 
-            dispatch(createNewItem(item))
-            .then(() => {dispatch(getSingleStore(loggedInUser?.store_id))})
-            .then(() =>{history.push(`/stores/${loggedInUser?.store_id}`)});
+            const itemFormBody = new FormData();
+            itemFormBody.append('name', name);
+            itemFormBody.append('description', description);
+            itemFormBody.append('price', price);
+            itemFormBody.append('content', content);
+            itemFormBody.append('content_type', contentType);
+            itemFormBody.append('image_url', imageUrl)
+
+
+            setImageUrlLoading(true);
+
+            const res = await fetch('/api/items/', {
+              method: 'POST',
+              body: itemFormBody
+            })
+
+            if(res.ok){
+              await res.json();
+              setImageUrlLoading(false);
+              dispatch(getSingleStore(loggedInUser?.store_id))
+              .then(() =>{history.push(`/stores/${loggedInUser?.store_id}`)});
+            } else {
+              setImageUrlLoading(false);
+            }
+
+
+        
+            // dispatch(createNewItem(itemFormBody))
+            // .then(() => {dispatch(getSingleStore(loggedInUser?.store_id))})
+            // .then(() =>{history.push(`/stores/${loggedInUser?.store_id}`)});
 
         }
     }
 
     return (
         <div className="item-create-form">
+          {imageUrlLoading ? (<p>Loading Files</p>) : (
             <form onSubmit={handleSubmit}>
               <div className='item-tips-text'>
                 <p className='item-tips-into'>Hi, when creating a new item here are a few tips!</p>
@@ -206,7 +228,7 @@ function CreateItemForm() {
                   <p> An Image Url must end in .jpg, .svg, or .png</p>
                 </div>
                 ) : null}
-                <label>
+                {/* <label>
                     Image Url:
                     <input
                         type="text"
@@ -214,6 +236,15 @@ function CreateItemForm() {
                         value={imageUrl}
                         onChange={(e) => setImageUrl(e.target.value)} 
                         required />
+                </label> */}
+                <label>
+                  Image Url:
+                  <input
+                      type="file"
+                      className='item-input'
+                      accept='image/*'
+                      onChange={(e) => setImageUrl(e.target.files[0])} 
+                      required />
                 </label>
               </div>
               <div className='item-input-div'>
@@ -233,6 +264,7 @@ function CreateItemForm() {
                 <button className="submit-btn" type="submit">Create Item</button>
                 <button className="cancel-btn" type="button" onClick={handleCancel}>Cancel</button>
             </form>
+          )}
         </div>
     )
 };

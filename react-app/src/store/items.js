@@ -109,23 +109,28 @@ export const getSingleItem = (itemId) => async (dispatch) => {
 };
 
 //CREATE ITEM
-export const createNewItem = (item) => async (dispatch) => {
-  const { name, description, price, content, content_type, image_url } = item;
+export const createNewItem = (itemFormBody) => async (dispatch) => {
+  // const { name, description, price, content, content_type, image_url } = item;
+
+  console.log('fresher image url', itemFormBody)
 
   const res = await csrfFetch("/api/items/", {
     method: "POST",
-    body: JSON.stringify({
-      name,
-      description,
-      price,
-      content,
-      content_type,
-      image_url
-    }),
+    // body: JSON.stringify({
+    //   name,
+    //   description,
+    //   price,
+    //   content,
+    //   content_type,
+    //   image_url
+    // }),
+    body: itemFormBody,
   });
-
+  
   if (res.ok) {
     const newItem = await res.json();
+    console.log('new Item', newItem)
+    console.log('new Item', newItem.image_url)
     dispatch(addItem(newItem));
     return res;
   }

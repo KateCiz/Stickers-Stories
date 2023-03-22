@@ -5,6 +5,7 @@ from app.models import db, Item, User, Review, Store
 from sqlalchemy.orm import joinedload
 from datetime import datetime
 import stripe
+from app.aws import upload_file_to_s3, allowed_file, get_unique_filename
 stripe.api_key = 'sk_test_51M3OooDVmTpUEfT54GvKtvkNLNaX0QyPedQUyKB9Of80VkJZ2FxjULYiavwafiCQSyljIbHBdyXZeot7Z7W5zlEM00RNC2jZz9'
 
 item_routes = Blueprint('items', __name__)
@@ -38,8 +39,23 @@ def get_all_stories():
 @item_routes.route('/', methods=['POST'])
 @login_required
 def create_item():
+    print('6666666666666666666666666666666666666666666666666666666666666666666666', request.files)
+    print('777777777777777777777777777777777777777777777777777777777', request.files.get('image_url'))
     form = ItemEditorForm() # look into this line
     form['csrf_token'].data = request.cookies['csrf_token']
+    if "image_url" not in request.files:
+        return jsonify({'message': 'To create an item, you need to provide a valid image'}), 400
+    file = request.files.get('image_url')
+    print('88888888888888888888888888888888888888888888888888888888888888888888', file.filename)
+
+
+    if not allowed_file(file.filename):
+        return jsonify({'message': 'To create an item, your image file type must be one of the types listed in the directions'}), 400
+    file.filename = get_unique_filename(file.filename)
+    awsUpload = upload_file_to_s3(file)
+    if 'url' not in awsUpload:
+        return awsUpload, 400 # is this syntax correct? 
+
     if not current_user.get_store_id() == "null":
         stripeProduct = stripe.Product.create(
             name=form.data['name'],
@@ -69,6 +85,7 @@ def create_item():
                         stripe_product_id=stripeProduct['id'],
                         store_id=current_user.get_store_id()
                     )
+                    item.image_url = awsUpload['url']
                     db.session.add(item)
                     db.session.commit()
                     return item.to_dict()

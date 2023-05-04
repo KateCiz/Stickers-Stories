@@ -60,7 +60,7 @@ def create_item():
         stripeProduct = stripe.Product.create(
             name=form.data['name'],
             description=form.data['description'],
-            # image_url=form.data['image_url']
+            image_url=awsUpload['url']
         )
         print('STRIPE STRIPE STRIPE STRIPE STRIPE', stripeProduct)
         if stripeProduct:

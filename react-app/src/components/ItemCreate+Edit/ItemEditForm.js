@@ -27,6 +27,7 @@ function EditItemForm() {
     const [content, setContent] = useState(item?.content);
     const [contentType, setContentType] = useState(item?.content_type);
     const [imageUrl, setImageUrl] = useState(item?.image_url);
+    const [imageUrlLoading, setImageUrlLoading] = useState(false); //might be needed?
 
     const [nameErrors, setNameErrors] = useState(false);
     const [descriptErrors, setDescriptErrors] = useState(false);
@@ -110,31 +111,57 @@ function EditItemForm() {
         history.push('/')
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
         if (nameErrors || descriptErrors || priceErrors || contentErrors || imageUrlErrors || !isValidContentLink || !isValidLink) {
             setShowErrors(true);
+            setImageUrlLoading(false); //might be needed?
           }
       
         if (!nameErrors && !descriptErrors && !priceErrors && !contentErrors && !imageUrlErrors && isValidContentLink && isValidLink) {
-            let item = {
-                name,
-                description,
-                price,
-                content,
-                content_type: contentType,
-                image_url: imageUrl
-            };
+            // let item = {
+            //     name,
+            //     description,
+            //     price,
+            //     content,
+            //     content_type: contentType,
+            //     image_url: imageUrl
+            // };
 
-            dispatch(editItem(item, itemId));
-            history.push(`/items/${itemId}`);
+            // dispatch(editItem(item, itemId));
+            // history.push(`/items/${itemId}`);
+
+            const itemFormBody = new FormData();
+            itemFormBody.append('name', name);
+            itemFormBody.append('description', description);
+            itemFormBody.append('price', price);
+            itemFormBody.append('content', content);
+            itemFormBody.append('content_type', contentType);
+            itemFormBody.append('image_url', imageUrl)
+
+
+            setImageUrlLoading(true);
+
+            const res = await fetch('/api/items/', {
+              method: 'POST',
+              body: itemFormBody
+            })
+
+            if(res.ok){
+              await res.json();
+              setImageUrlLoading(false);
+              dispatch(getSingleItem(itemId))
+              .then(() =>{history.push(`/items/${itemId}`)});
+            } else {
+              setImageUrlLoading(false);
+            }
         }
     }
 
     return (
         <div className='edit-item-div'>
-        {loaded && (
+        {(loaded && imageUrlLoading) ? (<p>Loading Files</p>) : (
         <form onSubmit={handleSubmit}>
           <div className='item-tips-text'>
                 <p className='item-tips-into'>Hi, tips to remember when editing an item...</p>
@@ -225,10 +252,12 @@ function EditItemForm() {
                 <label>
                     Image Url:
                     <input
-                        type="text"
+                        type="file"
                         className='item-input'
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)} 
+                        accept='image/*'
+                        // value={imageUrl}
+                        onChange={(e) => setImageUrl(e.target.files[0])} 
+                        // onChange={(e) => setImageUrl(e.target.value)} 
                         required />
                 </label>
             </div>

@@ -228,15 +228,6 @@ function CreateItemForm() {
                   <p> An Image Url must end in .jpg, .svg, or .png</p>
                 </div>
                 ) : null}
-                {/* <label>
-                    Image Url:
-                    <input
-                        type="text"
-                        className='item-input'
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)} 
-                        required />
-                </label> */}
                 <label>
                   Image Url:
                   <input
